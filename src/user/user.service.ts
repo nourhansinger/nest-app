@@ -1,6 +1,7 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, ValidationPipe } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
+
 
 @Injectable()
 export class UserService {
@@ -38,7 +39,7 @@ export class UserService {
       return this.users.find(user => user.id === id);
     }
   
-    update(id: number, updateUserDto: UpdateUserDto) {
+    update(id: number,updateUserDto: UpdateUserDto) {
       const foundUser = this.users.find(user => user.id === id);
       if (foundUser) {
         const updatedUser = { ...foundUser, ...updateUserDto };
